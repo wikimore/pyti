@@ -1,11 +1,9 @@
-from __future__ import absolute_import
 import numpy as np
 from pyti import catch_errors
 from pyti.function_helper import fill_for_noncomputable_vals
 from pyti.simple_moving_average import (
     simple_moving_average as sma
-    )
-from six.moves import range
+)
 
 
 def upper_bollinger_band(data, period, std_mult=2.0):
@@ -18,7 +16,7 @@ def upper_bollinger_band(data, period, std_mult=2.0):
     catch_errors.check_for_period_error(data, period)
 
     period = int(period)
-    simple_ma = sma(data, period)[period-1:]
+    simple_ma = sma(data, period)[period - 1:]
 
     upper_bb = []
     for idx in range(len(data) - period + 1):
@@ -54,7 +52,7 @@ def lower_bollinger_band(data, period, std=2.0):
     catch_errors.check_for_period_error(data, period)
 
     period = int(period)
-    simple_ma = sma(data, period)[period-1:]
+    simple_ma = sma(data, period)[period - 1:]
 
     lower_bb = []
     for idx in range(len(data) - period + 1):
@@ -76,7 +74,7 @@ def bandwidth(data, period, std=2.0):
 
     period = int(period)
     bandwidth = ((upper_bollinger_band(data, period, std) -
-                 lower_bollinger_band(data, period, std)) /
+                  lower_bollinger_band(data, period, std)) /
                  middle_bollinger_band(data, period, std)
                  )
 
@@ -110,7 +108,7 @@ def percent_bandwidth(data, period, std=2.0):
 
     period = int(period)
     percent_bandwidth = ((np.array(data) -
-                         lower_bollinger_band(data, period, std)) /
+                          lower_bollinger_band(data, period, std)) /
                          bb_range(data, period, std)
                          )
 

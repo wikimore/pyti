@@ -1,9 +1,6 @@
-from __future__ import absolute_import
 import numpy as np
 from pyti import catch_errors
 from pyti.function_helper import fill_for_noncomputable_vals
-from six.moves import range
-from six.moves import zip
 
 
 def relative_strength_index(data, period):
@@ -36,9 +33,9 @@ def relative_strength_index(data, period):
 
     for idx in range(1, len(data) - period):
         avg_gain = ((avg_gain * (period - 1) +
-                    gains[idx + (period - 1)]) / period)
+                     gains[idx + (period - 1)]) / period)
         avg_loss = ((avg_loss * (period - 1) +
-                    losses[idx + (period - 1)]) / period)
+                     losses[idx + (period - 1)]) / period)
 
         if avg_loss == 0:
             rsi.append(100)

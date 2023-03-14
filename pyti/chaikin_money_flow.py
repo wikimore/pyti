@@ -1,8 +1,6 @@
-from __future__ import absolute_import
 import numpy as np
 from pyti import catch_errors
 from pyti.function_helper import fill_for_noncomputable_vals
-from six.moves import range
 
 
 def chaikin_money_flow(close_data, high_data, low_data, volume, period):
@@ -20,9 +18,10 @@ def chaikin_money_flow(close_data, high_data, low_data, volume, period):
     high_data = np.array(high_data)
     low_data = np.array(low_data)
     volume = np.array(volume)
-    cmf = [sum((((close_data[idx+1-period:idx+1] - low_data[idx+1-period:idx+1]) -
-            (high_data[idx+1-period:idx+1] - close_data[idx+1-period:idx+1])) /
-            (high_data[idx+1-period:idx+1] - low_data[idx+1-period:idx+1])) *
-            volume[idx+1-period:idx+1]) / sum(volume[idx+1-period:idx+1]) for idx in range(period-1, len(close_data))]
+    cmf = [sum((((close_data[idx + 1 - period:idx + 1] - low_data[idx + 1 - period:idx + 1]) -
+                 (high_data[idx + 1 - period:idx + 1] - close_data[idx + 1 - period:idx + 1])) /
+                (high_data[idx + 1 - period:idx + 1] - low_data[idx + 1 - period:idx + 1])) *
+               volume[idx + 1 - period:idx + 1]) / sum(volume[idx + 1 - period:idx + 1]) for idx in
+           range(period - 1, len(close_data))]
     cmf = fill_for_noncomputable_vals(close_data, cmf)
     return cmf

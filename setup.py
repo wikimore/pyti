@@ -10,7 +10,7 @@ setup(
     long_description="This library contains various financial technical "
                      "indicators that can be used to analyze financial data.",
 
-    url='https://github.com/kylejusticemagnuson/pyti',
+    url='https://github.com/wikimore/pyti',
 
     author='Kyle Justice Magnuson',
     author_email='kyle@topsteptrader.com',
@@ -25,7 +25,6 @@ setup(
 
         'License :: OSI Approved :: MIT License',
 
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
     ],
 
